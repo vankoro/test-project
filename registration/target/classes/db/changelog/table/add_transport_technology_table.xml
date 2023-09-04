@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="Me" id="Create table transport_technology">
+        <!-- Validations -->
+        <preConditions>
+            <not>
+                <tableExists tableName="transport_technology"/>
+            </not>
+        </preConditions>
+        <!-- Create Table -->
+        <createTable tableName="transport_technology">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="brand" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="model" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="category" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="number" type="VARCHAR(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="date_of_issue" type="DATETIME">
+                <constraints nullable="true"/>
+            </column>
+            <column name="is_with_trailer" type="BOOLEAN">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+        <!-- Roll back -->
+        <rollback>
+            <dropTable tableName="transport_technology"/>
+        </rollback>
+        <comment>Created new table named 'transport_technology'</comment>
+    </changeSet>
+</databaseChangeLog>
